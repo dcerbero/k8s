@@ -8,3 +8,10 @@ example
   kubectl port-forward pod/mypod 5000 6000
 ```
 Note: It can be done with different Kubernetes elements, for example pods, deployments, services.
+
+### view logs of a container that has crashed and restart
+example
+```bash
+
+  kubectl logs <pod_name> -p
+```
