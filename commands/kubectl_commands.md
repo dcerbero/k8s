@@ -1,3 +1,7 @@
+### view short names
+```bash
+kubectl api-resources | more
+```
 ### make port forward
 ```bash
 kubectl port-forward --help
