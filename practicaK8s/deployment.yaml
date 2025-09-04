@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-web-app
+  labels:
+    app: mi-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mi-web-app
+  template:
+    metadata:
+      labels:
+        app: mi-web-app
+    spec:
+      containers:
+      - name: mi-web-app
+        image: nginxdemos/hello:plain-text
+        ports:
+        - containerPort: 80
+        env:
+        - name: MENSAJE_BIENVENIDA
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MENSAJE_BIENVENIDA
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_PASSWORD
